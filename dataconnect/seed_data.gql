@@ -1,0 +1,139 @@
+mutation CreateDemoData @transaction @auth(level: PUBLIC, insecureReason: "This is a seed data mutation and is safe to expose to the public for initial data population.") {
+  user_insertMany(data: [
+    {
+      id: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      displayName: "Alice Smith",
+      email: "alice.smith@example.com",
+      createdAt: "2023-01-15T10:00:00Z",
+      photoUrl: "https://example.com/alice.jpg",
+      bio: "An avid traveler and photographer."
+    },
+    {
+      id: "b1cde2f0-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+      displayName: "Bob Johnson",
+      email: "bob.johnson@example.com",
+      createdAt: "2023-02-20T11:30:00Z",
+      photoUrl: "https://example.com/bob.jpg",
+      bio: "Nature enthusiast and hiking guide."
+    }
+  ])
+  trip_insertMany(data: [
+    {
+      id: "c2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+      name: "European Adventure",
+      startDate: "2024-06-01",
+      endDate: "2024-06-30",
+      isPublic: true,
+      createdAt: "2023-03-10T14:00:00Z",
+      updatedAt: "2023-03-10T14:00:00Z",
+      description: "A month-long journey through Europe's most iconic cities.",
+      coverImageUrl: "https://example.com/europe_adventure.jpg",
+      creatorId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+    },
+    {
+      id: "d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f0a",
+      name: "Southeast Asian Odyssey",
+      startDate: "2024-09-01",
+      endDate: "2024-09-20",
+      isPublic: false,
+      createdAt: "2023-04-05T09:15:00Z",
+      updatedAt: "2023-04-05T09:15:00Z",
+      description: "Exploring the vibrant cultures and stunning landscapes of Southeast Asia.",
+      coverImageUrl: "https://example.com/southeast_asia.jpg",
+      creatorId: "b1cde2f0-3a4b-5c6d-7e8f-9a0b1c2d3e4f"
+    }
+  ])
+  destination_insertMany(data: [
+    {
+      id: "e6f7a8b9-c0d1-e2f3-a4b5-c6d7e8f0a1b2",
+      name: "Paris",
+      country: "France",
+      createdAt: "2023-03-10T14:05:00Z",
+      description: "The city of love and lights.",
+      latitude: 48.8566,
+      longitude: 2.3522,
+      tripId: "c2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f"
+    },
+    {
+      id: "f8a9b0c1-d2e3-f4a5-b6c7-d8e9f0a1b2c3",
+      name: "Rome",
+      country: "Italy",
+      createdAt: "2023-03-10T14:10:00Z",
+      description: "Ancient history and delicious food.",
+      latitude: 41.9028,
+      longitude: 12.4964,
+      tripId: "c2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f"
+    },
+    {
+      id: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+      name: "Bangkok",
+      country: "Thailand",
+      createdAt: "2023-04-05T09:20:00Z",
+      description: "A bustling metropolis with rich cultural heritage.",
+      latitude: 13.7563,
+      longitude: 100.5018,
+      tripId: "d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f0a"
+    }
+  ])
+  activity_insertMany(data: [
+    {
+      id: "1c2d3e4f-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+      name: "Eiffel Tower Visit",
+      type: "Sightseeing",
+      startTime: "2024-06-03T10:00:00Z",
+      endTime: "2024-06-03T12:00:00Z",
+      createdAt: "2023-03-10T15:00:00Z",
+      description: "Visit the iconic Eiffel Tower in Paris.",
+      cost: 25.00,
+      address: "Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France",
+      notes: "Book tickets in advance.",
+      destinationId: "e6f7a8b9-c0d1-e2f3-a4b5-c6d7e8f0a1b2"
+    },
+    {
+      id: "2a3b4c5d-6e7f-8a9b-c0d1-e2f3a4b5c6d7",
+      name: "Colosseum Tour",
+      type: "Historical Site",
+      startTime: "2024-06-10T09:00:00Z",
+      endTime: "2024-06-10T11:30:00Z",
+      createdAt: "2023-03-10T15:30:00Z",
+      description: "Guided tour of the ancient Colosseum in Rome.",
+      cost: 30.00,
+      address: "Piazza del Colosseo, 1, 00184 Roma RM, Italy",
+      notes: "Wear comfortable shoes.",
+      destinationId: "f8a9b0c1-d2e3-f4a5-b6c7-d8e9f0a1b2c3"
+    },
+    {
+      id: "3e4f5a6b-7c8d-9e0f-1a2b-3c4d5e6f7a8b",
+      name: "Grand Palace Visit",
+      type: "Cultural Experience",
+      startTime: "2024-09-05T13:00:00Z",
+      endTime: "2024-09-05T16:00:00Z",
+      createdAt: "2023-04-05T10:00:00Z",
+      description: "Explore the magnificent Grand Palace and Temple of the Emerald Buddha.",
+      cost: 15.00,
+      address: "Phra Borom Maha Ratchawang, Phra Nakhon, Bangkok 10200, Thailand",
+      notes: "Dress modestly.",
+      destinationId: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"
+    }
+  ])
+  collaboration_insertMany(data: [
+    {
+      userId: "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      tripId: "c2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+      role: "Owner",
+      createdAt: "2023-03-10T14:00:00Z"
+    },
+    {
+      userId: "b1cde2f0-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+      tripId: "c2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+      role: "Editor",
+      createdAt: "2023-03-10T14:15:00Z"
+    },
+    {
+      userId: "b1cde2f0-3a4b-5c6d-7e8f-9a0b1c2d3e4f",
+      tripId: "d4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f0a",
+      role: "Owner",
+      createdAt: "2023-04-05T09:15:00Z"
+    }
+  ])
+}
