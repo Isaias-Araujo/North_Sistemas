@@ -1,1 +1,0 @@
-/.well-known/acme-challenge/VWPG2LK7mOrspxXezIfX15Evp3J23-hT3NnwIjvpvR4
