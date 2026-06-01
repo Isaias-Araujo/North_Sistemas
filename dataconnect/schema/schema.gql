@@ -1,0 +1,49 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+  bio: String
+}
+
+type Trip @table {
+  name: String!
+  startDate: Date!
+  endDate: Date!
+  isPublic: Boolean!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  description: String
+  coverImageUrl: String
+  creator: User
+}
+
+type Destination @table {
+  name: String!
+  country: String!
+  createdAt: Timestamp!
+  description: String
+  latitude: Float
+  longitude: Float
+  trip: Trip
+}
+
+type Activity @table {
+  name: String!
+  type: String!
+  startTime: Timestamp!
+  endTime: Timestamp!
+  createdAt: Timestamp!
+  description: String
+  cost: Float
+  address: String
+  notes: String
+  destination: Destination
+}
+
+type Collaboration @table(key: ["user", "trip"]) {
+  role: String!
+  createdAt: Timestamp!
+  user: User!
+  trip: Trip!
+}
